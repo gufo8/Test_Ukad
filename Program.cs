@@ -9,7 +9,7 @@ namespace Test_Ukad
     //...............other
 
     // spent time - not full 4 days 
-    // rewrote 3 times 
+    // rewrote 2 times 
     // refactoring - 1 time 
     // debug.... 
     // did not use try/catch - did not have enough time (was ill)

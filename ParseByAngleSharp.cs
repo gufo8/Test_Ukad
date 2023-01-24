@@ -34,25 +34,6 @@ namespace Test_Ukad
                 }
             }
         }
-
-
-
-
-        //public  void Parse(string sourсeUrl)
-        //{
-        //    using var context = BrowsingContext.New(Configuration.Default.WithDefaultLoader());
-        //    using var doc = await context.OpenAsync(sourсeUrl);
-        //    //using var doc = context.G;
-        //    // var title = doc.QuerySelector("title").InnerHtml;            
-        //    var items = doc.QuerySelectorAll("a");
-        //    foreach (var item in items)
-        //    {
-        //        //lstUrls.Add(item.TextContent); GetAttribute("href")
-        //        if (item.GetAttribute("href") != null)
-        //        {
-        //            ListUrls.Add(item.GetAttribute("href").ToString());
-        //        }                
-        //    } 
-        //}
+        
     }
 }
