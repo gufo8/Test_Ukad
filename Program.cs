@@ -2,17 +2,17 @@
 
 namespace Test_Ukad
 {
-    // not too much sites gives answers
-    // checked on - always give answer https://learn.microsoft.com/
-    // https://www.gsmarena.com/
-    // https://www.mobileshop.eu/
-    //...............other
+    // almost all sites (what i checked) have different modifications of the sitemap address
+    // checked on - reccomended in your email https://www.litedb.org (https://www.litedb.org/sitemap.xml)
+    // https://hillary.ua (https://hillary.ua/sitemap.xml) - contains not existing pages
+    // https://japan-shampoo.com.ua (https://japan-shampoo.com.ua/sitemap.xml)  - contains not existing pages
+    // https://intellect.ml (https://intellect.ml/sitemap.xml)  - contains not existing pages
+    // https://metanit.com (https://metanit.com/sitemap.xml) - remote server return  - forbidden:)
+    //not easy to find site which have that kind of sitemap https://example.com/sitemap.xml
 
-    // spent time - not full 4 days 
-    // rewrote 2 times 
-    // refactoring - 1 time 
-    // debug.... 
-    // did not use try/catch - did not have enough time (was ill)
+    //a lot have different addresses - which was not checked in this version, for example:
+    //Sitemap: https://learn.microsoft.com/_sitemaps/sitemapindex.xml
+    //Sitemap: https://learn.microsoft.com/answers/sitemaps/sitemap.xml
 
 
     internal class Program
@@ -23,7 +23,8 @@ namespace Test_Ukad
             string sourseUrl = Console.ReadLine();
 
             UserParser userParser = new UserParser(sourseUrl);
-            userParser.ShowResult(new ParseByAngleSharp());            
+            userParser.ShowResult(new ParseByAngleSharp());
+            Console.WriteLine();
             userParser.ShowResult(new ParseBySiteMap());
         }
     }

@@ -8,29 +8,22 @@ namespace Test_Ukad
 {
     public class UserParser
     {
-        IParser parser;
         string sourceUrl;
         public UserParser(string userUrl)
         {
-            parser = new ParseByAngleSharp();
             sourceUrl = userUrl;
-        }       
+        }
+        
 
-        public void ShowResult(IParser type)
+        public void ShowResult(IParser parserType)
         {
-            parser = type;
-            parser.Parse(sourceUrl);
-            if (parser.ListUrls.Count != 0)
-            {
-                foreach (var item in parser.ListUrls)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-            else { Console.WriteLine("No links found on the specified page"); };
-            Console.WriteLine($"Urls found after using {type.GetType().Name} a website: {parser.ListUrls.Count}");
+            parserType.Parse(sourceUrl);            
+            Console.WriteLine($"URL -address found after" +
+                              $" scraping of the entered " +
+                              $"address of the " +
+                              $"site using {parserType.GetType().Name} " +
+                              $"in the amount: {parserType.ListUrls.Count}");
 
-        }       
-
+        }
     }
 }
