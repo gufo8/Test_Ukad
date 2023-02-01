@@ -3,11 +3,11 @@
 namespace Test_Ukad
 {
     // almost all sites (what i checked) have different modifications of the sitemap address
-    // checked on - reccomended in your email https://www.litedb.org (https://www.litedb.org/sitemap.xml)
-    // https://hillary.ua (https://hillary.ua/sitemap.xml) - contains not existing pages
-    // https://japan-shampoo.com.ua (https://japan-shampoo.com.ua/sitemap.xml)  - contains not existing pages
-    // https://intellect.ml (https://intellect.ml/sitemap.xml)  - contains not existing pages
-    // https://metanit.com (https://metanit.com/sitemap.xml) - remote server return  - forbidden:)
+    // checked on - reccomended in your email https://www.litedb.org/ (https://www.litedb.org/sitemap.xml)
+    // https://hillary.ua/ (https://hillary.ua/sitemap.xml) - contains not existing pages
+    // https://japan-shampoo.com.ua/ (https://japan-shampoo.com.ua/sitemap.xml)  - contains not existing pages
+    // https://intellect.ml/ (https://intellect.ml/sitemap.xml)  - contains not existing pages
+    // https://metanit.com/ (https://metanit.com/sitemap.xml) - remote server return  - forbidden:)
     //not easy to find site which have that kind of sitemap https://example.com/sitemap.xml
 
     //a lot have different addresses - which was not checked in this version, for example:
@@ -24,7 +24,7 @@ namespace Test_Ukad
 
             UserParser userParser = new UserParser(sourseUrl);
             userParser.ShowResult(new ParseByAngleSharp());
-            Console.WriteLine();
+            Console.WriteLine("***************************************");
             userParser.ShowResult(new ParseBySiteMap());
         }
     }

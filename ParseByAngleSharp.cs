@@ -56,14 +56,15 @@ namespace Test_Ukad
                 var doc = new HtmlParser().ParseDocument(htmlPage);
                 var pageLinks = doc.QuerySelectorAll("a")
                                    .Select(a => a.GetAttribute("href"))
-                                   .Where(href => !string.IsNullOrEmpty(href));
-                var filteredLinks = pageLinks.Where(link => link.StartsWith(sourсeUrl) && !visitedLinks.Contains(link));
+                                   .Where(href => !string.IsNullOrEmpty(href)); ;
+                var filteredLinks = pageLinks.Where(link => link.StartsWith(sourсeUrl) | link.StartsWith("/")).Distinct(); //&& !visitedLinks.Contains(link)
 
                 foreach (var link in filteredLinks)
-                {
-                    if (!linksToVisit.Contains(link))
+                {                   
+                    var fullLink = new Uri(new Uri(sourсeUrl), link).AbsoluteUri;
+                    if (fullLink.StartsWith(sourсeUrl) & !linksToVisit.Contains(fullLink) & !visitedLinks.Contains(fullLink))
                     {
-                        linksToVisit.Add(link);
+                        linksToVisit.Add(fullLink);
                     }
                 }
             }
@@ -71,4 +72,3 @@ namespace Test_Ukad
         }
     }
 }
-

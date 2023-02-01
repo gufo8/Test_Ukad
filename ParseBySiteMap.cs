@@ -37,14 +37,7 @@ namespace Test_Ukad
                     continue;
                 }
                 try
-                {
-                    //left the commented initial version of the sitemap search due to the fact
-                    //that almost all sites have different modifications
-                    //of the sitemap address - then you could get these address modifications like this
-                    //(string, string, double) result = loader.LoadHTMLDoc(currentLink + @"/robots.txt");
-
-                    //remade due to the fact that the task indicated
-                    //the use of a direct and only such address to obtain a sitemap
+                {                    
                     if (!currentLink.Contains("sitemap.xml") || currentLink.Contains(".xml"))
                     {
                         result = loader.LoadHTMLDoc(currentLink + @"/sitemap.xml");
@@ -65,13 +58,13 @@ namespace Test_Ukad
                 {
                     var pageLinks = UrlsFromString(htmlPage, "c>", "<sitemap>", "<url>", "<lo", 
                         "<lastmod>", "</sitemap", "</loc>", "</url>", "</lastmod>");
-                    var filteredLinks = pageLinks.Where(link => link.StartsWith(sourсeUrl) 
-                                                        && !visitedLinks.Contains(link));
+                    var filteredLinks = pageLinks.Where(link => link.StartsWith(sourсeUrl) | link.StartsWith("/")).Distinct();
                     foreach (var link in filteredLinks)
-                    {
-                        if (!linksToVisit.Contains(link))
+                    {                                          
+                        var fullLink = new Uri(new Uri(sourсeUrl), link).AbsoluteUri;
+                        if (fullLink.StartsWith(sourсeUrl) & !linksToVisit.Contains(fullLink) & !visitedLinks.Contains(fullLink))
                         {
-                            linksToVisit.Add(link);
+                            linksToVisit.Add(fullLink);
                         }
                     }
                 }
@@ -86,9 +79,9 @@ namespace Test_Ukad
             string[] str = source.Split(lst, StringSplitOptions.RemoveEmptyEntries);
             foreach (var item in str)
             {
-                if (item.StartsWith(startWith) & item.Contains("http"))
+                if (item.StartsWith(startWith))
                 {
-                    urls.Add(item.Substring(item.IndexOf('h')));
+                    urls.Add(item.Substring(item.IndexOf('>')+1));
                 }
             }
             return urls;
